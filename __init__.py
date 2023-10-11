@@ -12,9 +12,11 @@ import os
 
 md_iid = '1.0'
 md_version = "0.1"
-md_name = "translators"
-md_description = "Translate sentences using translators"
+md_name = "Translators"
+md_description = "Translate sentences using the python translators plugin"
+md_url = "https://github.com/apbernhard/translators_for_albert/"
 md_lib_dependencies = "translators==5.8.7"
+md_maintainers = "@apbernhard"
 
 LANGUAGES = get_languages()
 class Plugin(TriggerQueryHandler):
