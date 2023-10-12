@@ -1,5 +1,17 @@
 """
-Translator plugin using py-translators
+Translator plugin using py-translators. Syntax consists of optional parameter (`;;`) and text block (`Text...`)
+
+Syntax Examples: 
+* all parameters: `engine;source;destination Text...`
+* only source and destination language: `;source;destination Text...`
+* Only destination language: `;;destination Text...`
+* Only text: Text...
+
+default values:
+* engine: `bing`
+* source: `auto`
+* destination: `en`.
+
 """
 
 from albert import *
@@ -33,7 +45,7 @@ class Plugin(TriggerQueryHandler):
         return "trans "
 
     def synopsis(self):
-        return "[[src] dest] text"
+        return "[engine;source_language;destination_language] text"
 
     def initialize(self):
         self.icon = [os.path.dirname(__file__)+"/translators_logo.png"]
@@ -49,7 +61,7 @@ class Plugin(TriggerQueryHandler):
                 if not query.isValid:
                     return
             
-            # define standard parameters for request
+            # explication of standard parameters as defined for translators.translate_text()
             engine = 'bing'
             src = 'auto'
             dest = 'en'
@@ -78,7 +90,7 @@ class Plugin(TriggerQueryHandler):
                                   lambda t=translation: setClipboardText(t))]
             ))
 
-            # Workaround for now for showing the available languages per translation engine
+            # Todo: resolve workaround; for now shows the available languages per translation engine
             engine_languages = "\n".join(get_languages(engine).keys())
             query.add(Item(
                 id=md_id,
