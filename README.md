@@ -23,5 +23,5 @@ Albert plugin for translating sentences using the python plugin [translators](ht
 |`trans ;; Text...`|translate auto-detected language to default destination language using default engine |
 |`trans Text...`|(same as above) translate auto-detected language to default destination language using default engine |
 
-### Additional Information:
+### Additional Information
 As the translator engines make use of differenct abbreviations for languages, for now there is a quick fix displaying all the language codes of the selected translation engine as the second query result.
